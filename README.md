@@ -30,7 +30,7 @@ If you do not have a golang runtime environment, you can connect the client to t
 ### 1. Installing the plugin
 1. Clone this git repository.
 2. Create a `Plugins/TurboLink` folder under your project folder, then copy this repo into it.
-3. Download pre-built thirdparty binaries libraries from [here](https://github.com/thejinchao/turbolink-libraries/releases), and extract it to `Plugin/TurboLink/ThirdParty`.
+3. Download pre-built thirdparty binaries libraries from [here](https://github.com/ZezhongWang/turbolink-libraries/releases/), and extract it to `Plugin/TurboLink/ThirdParty`.
 
 ### 2. Config service endpoint
 Open the project setting window (TurboLink Grpc/Services Config) to set the server endpoint to different gRPC services.  
