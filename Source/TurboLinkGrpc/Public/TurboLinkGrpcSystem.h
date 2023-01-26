@@ -2,13 +2,13 @@
 
 #include "CoreMinimal.h"
 #include "TurboLinkGrpcClient.h"
-#include "TurboLinkGrpcManager.generated.h"
+#include "TurboLinkGrpcSystem.generated.h"
 
 class UGrpcService;
 class GrpcContext;
 
 UCLASS(ClassGroup=TurboLink)
-class TURBOLINKGRPC_API UTurboLinkGrpcManager : public UObject
+class TURBOLINKGRPC_API UTurboLinkGrpcSystem : public UObject
 {
 	GENERATED_BODY()
 
@@ -46,6 +46,6 @@ private:
 	bool bIsShutdowning = false;
 
 public:
-	UTurboLinkGrpcManager();
-	virtual ~UTurboLinkGrpcManager();
+	UTurboLinkGrpcSystem();
+	virtual ~UTurboLinkGrpcSystem();
 };

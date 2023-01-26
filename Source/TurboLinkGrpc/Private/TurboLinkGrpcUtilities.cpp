@@ -1,7 +1,7 @@
 #include "TurboLinkGrpcUtilities.h"
 #include "TurboLinkGrpcModule.h"
 
-UTurboLinkGrpcManager* UTurboLinkGrpcUtilities::GetTurboLinkGrpcManager()
+UTurboLinkGrpcSystem* UTurboLinkGrpcUtilities::GetTurboLinkGrpcSystem()
 {
     FTurboLinkGrpcModule* turboLinkModule = FModuleManager::GetModulePtr<FTurboLinkGrpcModule>("TurboLinkGrpc");
     if (turboLinkModule == nullptr)

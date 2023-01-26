@@ -11,7 +11,7 @@ class UGrpcClient;
 
 class GrpcContext : public TSharedFromThis<GrpcContext>
 {
-	friend class UTurboLinkGrpcManager;
+	friend class UTurboLinkGrpcSystem;
 	friend class UGrpcClient;
 public:
     FGrpcContextHandle GetHandle() const

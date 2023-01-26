@@ -1,11 +1,11 @@
 #pragma once
 
-#include "TurboLinkGrpcManager.h"
+#include "TurboLinkGrpcSystem.h"
 
 #include <grpcpp/grpcpp.h>
 #include <set>
 
-class UTurboLinkGrpcManager::Private
+class UTurboLinkGrpcSystem::Private
 {
 public:
 	struct ServiceChannel
