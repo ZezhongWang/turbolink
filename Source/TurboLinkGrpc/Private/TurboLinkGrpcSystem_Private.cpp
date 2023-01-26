@@ -1,4 +1,4 @@
-#include "TurboLinkGrpcManager_Private.h"
+#include "TurboLinkGrpcManager_System.h"
 #include "TurboLinkGrpcModule.h"
 
 EGrpcServiceState UTurboLinkGrpcSystem::Private::GrpcStateToServiceState(grpc_connectivity_state State)

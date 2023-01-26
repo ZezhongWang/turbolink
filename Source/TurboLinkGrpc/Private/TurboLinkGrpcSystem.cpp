@@ -1,5 +1,5 @@
 #include "TurboLinkGrpcSystem.h"
-#include "TurboLinkGrpcManager_Private.h"
+#include "TurboLinkGrpcSystem_Private.h"
 #include "TurboLinkGrpcContext.h"
 #include "TurboLinkGrpcModule.h"
 
