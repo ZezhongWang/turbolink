@@ -1,0 +1,11 @@
+version: v1
+plugins:
+  - plugin: cpp
+    out: gen/Private/pb
+  - plugin: cpp-grpc
+    out: gen/Private/pb
+    path: ../../ThirdParty/grpc/bin/grpc_cpp_plugin.exe
+  # following steps:
+  # 1. replace #include "...pb.h" with #include "pb/...pb.h"
+  # 2. add #ifdef check #undef check #endif to check() function in debug.pb.h
+  # 3. add #pragma warning(disable:4800) to report error files.

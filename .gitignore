@@ -75,5 +75,4 @@ DerivedDataCache/*
 .idea/.idea.GrpcTest/.idea/vcs.xml
 output/
 ThirdParty/*
-SGreeter/
-Source/TurboLinkGrpc/Private/pb/
+gen/
