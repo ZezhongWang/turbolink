@@ -2,14 +2,14 @@
 
 #include "CoreMinimal.h"
 #include "Modules/ModuleManager.h"
-#include "TurboLinkGrpcManager.h"
+#include "TurboLinkGrpcSystem.h"
 #include "TurboLinkGrpcConfig.h"
 
 DECLARE_LOG_CATEGORY_EXTERN(LogTurboLink, Log, All);
 
 class TURBOLINKGRPC_API FTurboLinkGrpcModule : public FTickableGameObject, public IModuleInterface
 {
-	friend class UTurboLinkGrpcManager;
+	friend class UTurboLinkGrpcSystem;
 public:
 	// IModuleInterface implementation
 	virtual void StartupModule() override;
@@ -20,12 +20,12 @@ public:
 	TStatId GetStatId() const override { return TStatId();	}
 	void Tick(float DeltaTime) override;
 
-	UTurboLinkGrpcManager* GetTurboLinkGrpcManager();
+	UTurboLinkGrpcSystem* GetTurboLinkGrpcManager();
 
 	UTurboLinkGrpcConfig* GetTurboLinkGrpcConfig();
 	
 private:
-	UTurboLinkGrpcManager* TurboLinkGrpcManager;
+	UTurboLinkGrpcSystem* TurboLinkGrpcManager;
 #if WITH_EDITOR
 	TSharedPtr<FTurboLinkGrpcConfig> ConfigInstance;
 #else
