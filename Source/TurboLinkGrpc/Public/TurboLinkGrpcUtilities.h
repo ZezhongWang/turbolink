@@ -15,7 +15,7 @@ class TURBOLINKGRPC_API UTurboLinkGrpcUtilities : public UBlueprintFunctionLibra
 	
 public:
 	UFUNCTION(BlueprintPure, Category = "TurboLink")
-	static class UTurboLinkGrpcSystem* GetTurboLinkGrpcSystem();
+	static class UTurboLinkGrpcManager* GetTurboLinkGrpcManager();
 
 	UFUNCTION(BlueprintPure, Category = "TurboLink")
 	static class UTurboLinkGrpcConfig* GetTurboLinkGrpcConfig();

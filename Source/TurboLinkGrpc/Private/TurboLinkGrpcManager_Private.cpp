@@ -1,7 +1,7 @@
 #include "TurboLinkGrpcManager_Private.h"
 #include "TurboLinkGrpcModule.h"
 
-EGrpcServiceState UTurboLinkGrpcSystem::Private::GrpcStateToServiceState(grpc_connectivity_state State)
+EGrpcServiceState UTurboLinkGrpcManager::Private::GrpcStateToServiceState(grpc_connectivity_state State)
 {
 	switch (State)
 	{
@@ -24,7 +24,7 @@ EGrpcServiceState UTurboLinkGrpcSystem::Private::GrpcStateToServiceState(grpc_co
 	return EGrpcServiceState::NotCreate;
 }
 
-std::shared_ptr<UTurboLinkGrpcSystem::Private::ServiceChannel> UTurboLinkGrpcSystem::Private::CreateServiceChannel(const char* EndPoint, UGrpcService* AttachedService)
+std::shared_ptr<UTurboLinkGrpcManager::Private::ServiceChannel> UTurboLinkGrpcManager::Private::CreateServiceChannel(const char* EndPoint, UGrpcService* AttachedService)
 {
 	auto itServiceChannel = ChannelMap.find(EndPoint);
 	if (itServiceChannel != ChannelMap.end())
@@ -67,7 +67,7 @@ std::shared_ptr<UTurboLinkGrpcSystem::Private::ServiceChannel> UTurboLinkGrpcSys
 	return channel;
 }
 
-void UTurboLinkGrpcSystem::Private::RemoveServiceChannel(std::shared_ptr<ServiceChannel> Channel, UGrpcService* AttachedService)
+void UTurboLinkGrpcManager::Private::RemoveServiceChannel(std::shared_ptr<ServiceChannel> Channel, UGrpcService* AttachedService)
 {
 	auto itServiceChannel = ChannelMap.find(Channel->EndPoint);
 	if (itServiceChannel == ChannelMap.end() || itServiceChannel->second != Channel)
@@ -85,13 +85,13 @@ void UTurboLinkGrpcSystem::Private::RemoveServiceChannel(std::shared_ptr<Service
 	ChannelMap.erase(Channel->EndPoint);
 }
 
-std::unique_ptr<grpc::ClientContext> UTurboLinkGrpcSystem::Private::CreateRpcClientContext(void)
+std::unique_ptr<grpc::ClientContext> UTurboLinkGrpcManager::Private::CreateRpcClientContext(void)
 {
     std::unique_ptr<grpc::ClientContext> context = std::make_unique<grpc::ClientContext>();
     return context;
 }
 
-void UTurboLinkGrpcSystem::Private::ShutdownCompletionQueue()
+void UTurboLinkGrpcManager::Private::ShutdownCompletionQueue()
 {
 	if (CompletionQueue == nullptr) return;
 

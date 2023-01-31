@@ -1,5 +1,5 @@
 #include "TurboLinkGrpcModule.h"
-#include "TurboLinkGrpcSystem.h"
+#include "TurboLinkGrpcManager.h"
 
 #include "Misc/ConfigCacheIni.h"
 #include "HAL/ExceptionHandling.h"
@@ -77,14 +77,14 @@ void FTurboLinkGrpcModule::ShutdownModule()
 #endif
 }
 
-UTurboLinkGrpcSystem* FTurboLinkGrpcModule::GetTurboLinkGrpcManager(void)
+UTurboLinkGrpcManager* FTurboLinkGrpcModule::GetTurboLinkGrpcManager(void)
 {
 	if (TurboLinkGrpcManager)
 	{
 		return TurboLinkGrpcManager;
 	}
 
-	TurboLinkGrpcManager = NewObject<UTurboLinkGrpcSystem>();
+	TurboLinkGrpcManager = NewObject<UTurboLinkGrpcManager>();
 	TurboLinkGrpcManager->AddToRoot();
 	return TurboLinkGrpcManager;
 }

@@ -3,7 +3,7 @@
 #include "CoreMinimal.h"
 #include "TurboLinkGrpcService.generated.h"
 
-class UTurboLinkGrpcSystem;
+class UTurboLinkGrpcManager;
 class UGrpcClient;
 
 UENUM(BlueprintType)
@@ -24,7 +24,7 @@ UCLASS(ClassGroup = TurboLink, BlueprintType, Abstract)
 class TURBOLINKGRPC_API UGrpcService : public UObject
 {
 	GENERATED_BODY()
-	friend class UTurboLinkGrpcSystem;
+	friend class UTurboLinkGrpcManager;
 	friend class UGrpcClient;
 
 public:
@@ -58,7 +58,7 @@ protected:
 
 public:
 	UPROPERTY()
-	UTurboLinkGrpcSystem* TurboLinkManager;
+	UTurboLinkGrpcManager* TurboLinkManager;
 	
 	bool bIsShutdowning = false;
 

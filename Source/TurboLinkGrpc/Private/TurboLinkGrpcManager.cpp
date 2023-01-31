@@ -1,16 +1,16 @@
-#include "TurboLinkGrpcSystem.h"
+#include "TurboLinkGrpcManager.h"
 #include "TurboLinkGrpcManager_Private.h"
 #include "TurboLinkGrpcContext.h"
 #include "TurboLinkGrpcModule.h"
 
-UTurboLinkGrpcSystem::UTurboLinkGrpcSystem()
-	: d (new UTurboLinkGrpcSystem::Private())
+UTurboLinkGrpcManager::UTurboLinkGrpcManager()
+	: d (new UTurboLinkGrpcManager::Private())
 	, NextTag(0)
 {
 	UE_LOG(LogTurboLink, Log, TEXT("Construct TurboLinkManager[%p]"), this);
 }
 
-UTurboLinkGrpcSystem::~UTurboLinkGrpcSystem()
+UTurboLinkGrpcManager::~UTurboLinkGrpcManager()
 {
 	UE_LOG(LogTurboLink, Log, TEXT("Destruct TurboLinkManager[%p]"), this);
 	delete d;
@@ -23,7 +23,7 @@ UTurboLinkGrpcSystem::~UTurboLinkGrpcSystem()
 	}
 }
 
-void UTurboLinkGrpcSystem::InitManager()
+void UTurboLinkGrpcManager::InitManager()
 {
 	bIsShutdowning = false;
 	if (bIsInitialized) return;
@@ -42,7 +42,7 @@ void UTurboLinkGrpcSystem::InitManager()
 	bIsInitialized = true;
 }
 
-void UTurboLinkGrpcSystem::Shutdown()
+void UTurboLinkGrpcManager::Shutdown()
 {
 	if (bIsShutdowning) return;
 	bIsShutdowning = true;
@@ -64,7 +64,7 @@ void UTurboLinkGrpcSystem::Shutdown()
 	bIsInitialized = false;
 }
 
-void UTurboLinkGrpcSystem::Tick(float DeltaTime)
+void UTurboLinkGrpcManager::Tick(float DeltaTime)
 {
 	if (bIsShutdowning || !bIsInitialized) return;
 
@@ -127,7 +127,7 @@ void UTurboLinkGrpcSystem::Tick(float DeltaTime)
 	}
 }
 
-UGrpcService* UTurboLinkGrpcSystem::MakeService(const FString& ServiceName)
+UGrpcService* UTurboLinkGrpcManager::MakeService(const FString& ServiceName)
 {
 	UClass** serviceClass = ServiceClassMap.Find(ServiceName);
 	if (serviceClass == nullptr)
@@ -141,19 +141,19 @@ UGrpcService* UTurboLinkGrpcSystem::MakeService(const FString& ServiceName)
 	return service;
 }
 
-void* UTurboLinkGrpcSystem::GetNextTag(TSharedPtr<GrpcContext> Context)
+void* UTurboLinkGrpcManager::GetNextTag(TSharedPtr<GrpcContext> Context)
 {
 	void* nextTag = (void*)(++NextTag);
 	GrpcContextMap.Add(nextTag, Context);
 	return nextTag;
 }
 
-void UTurboLinkGrpcSystem::RemoveTag(void* Tag)
+void UTurboLinkGrpcManager::RemoveTag(void* Tag)
 {
 	GrpcContextMap.Remove(Tag);
 }
 
-FGrpcContextHandle UTurboLinkGrpcSystem::GetNextContextHandle()
+FGrpcContextHandle UTurboLinkGrpcManager::GetNextContextHandle()
 {
 	FGrpcContextHandle nextHandle(++NextContextHandle);
 	return nextHandle;
