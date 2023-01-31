@@ -1,6 +1,6 @@
 #include "TurboLinkGrpcService.h"
 #include "TurboLinkGrpcUtilities.h"
-#include "TurboLinkGrpcSystem_Private.h"
+#include "TurboLinkGrpcManager_Private.h"
 #include "TurboLinkGrpcModule.h"
 
 UGrpcService::UGrpcService()
